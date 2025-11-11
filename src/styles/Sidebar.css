@@ -1,0 +1,46 @@
+ :root { --sidebar-width: 240px; }
+
+.sidebar {
+  width: var(--sidebar-width);
+  /* Darker sidebar using the provided palette */
+  background: linear-gradient(180deg, var(--color-600), var(--color-700));
+  color: #ffffff;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000; /* keep above page content but allow layout spacing */
+  box-shadow: 6px 12px 40px rgba(2,16,38,0.35);
+  padding: 20px;
+}
+.sidebar-header { text-align: center; padding: 12px 8px; }
+.sidebar-header h2 { font-size: 1.125rem; color: #ffffff; margin: 0; }
+
+.sidebar-menu { list-style: none; padding: 0; margin-top: 18px; flex: 1; }
+.sidebar-menu li { display:flex; align-items:center; gap:12px; padding:10px 12px; cursor:pointer; border-radius:8px; transition: background .18s ease, transform .12s ease; }
+.sidebar-menu li:hover { background: rgba(255,255,255,0.06); transform: translateX(4px); }
+.sidebar-menu .icon { font-size: 1.15rem; color: #ffffff; }
+
+.sidebar-footer { padding: 12px; border-top: 1px solid rgba(255,255,255,0.06); }
+
+.logout-btn { width: 100%; padding: 10px 12px; border-radius: var(--radius-sm); font-weight: 600; background: linear-gradient(180deg,#c62828,#991f1f); color: white; box-shadow: 0 8px 24px rgba(0,0,0,0.25); }
+.logout-btn:hover { transform: translateY(-2px); opacity: .95; }
+
+.sidebar-link { display:flex; align-items:center; gap:10px; color:#ffffff; text-decoration:none; padding:8px 12px; border-radius:8px; }
+.sidebar-link:hover { background: rgba(255,255,255,0.04); color: #ffffff; }
+
+@media (max-width: 900px) {
+  .sidebar { width: 64px; padding: 12px 6px; }
+  .sidebar-header h2 { display: none; }
+  .sidebar-menu li { justify-content: center; padding: 10px 6px; }
+  .sidebar-menu li span.label { display: none; }
+  .layout-content { margin-left: 64px; }
+}
+
+@media (max-width: 480px) {
+  .sidebar { position: absolute; z-index: 1200; left: -9999px; }
+  .layout-content { margin-left: 0; }
+}
